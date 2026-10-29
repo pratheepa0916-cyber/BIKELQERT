@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Keychain | Bike Security</title>
+<title>Keychain Bike Security</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
@@ -12,52 +12,77 @@
 *{box-sizing:border-box}
 :root{color-scheme:dark}
 body{
- margin:0;background:#080e1a;color:#f5f8ff;
+ margin:0;
+ background:#080f1d;
+ color:#f4f7ff;
  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
 }
-.app{max-width:1050px;margin:auto;padding:18px 15px 35px}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.logo{font-size:20px;font-weight:850;letter-spacing:.5px}
-.logo span{color:#59a6ff}
-.small{font-size:11px;color:#93a4bf}
-.pill{padding:9px 12px;border-radius:25px;background:#173527;color:#6ef1a7;font-size:11px;font-weight:700}
-h1{font-size:27px;letter-spacing:-1px;margin:0 0 6px}
-.sub{color:#91a2ba;font-size:13px;margin-bottom:22px}
+.app{max-width:980px;margin:auto;padding:18px 14px 35px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.brand{font-size:21px;font-weight:900;letter-spacing:.5px}
+.brand span{color:#54a7ff}
+.muted{color:#8fa3bf;font-size:12px}
+.pill{background:#163829;color:#69edaa;border-radius:30px;padding:9px 11px;font-size:11px;font-weight:800}
+h1{font-size:26px;letter-spacing:-.8px;margin:0 0 7px}
+.subtitle{color:#9aabc5;font-size:13px;margin-bottom:23px}
 .layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.card{background:#111c2d;border:1px solid #26364d;border-radius:23px;padding:20px;margin-bottom:16px}
-.cardtitle{font-size:13px;font-weight:700;color:#d4e1f6;margin-bottom:17px}
+.card{
+ background:#121e31;
+ border:1px solid #263751;
+ border-radius:23px;
+ padding:20px;
+ margin-bottom:16px;
+}
+.cardTitle{font-size:12px;font-weight:800;letter-spacing:1px;color:#a9bedc;margin-bottom:17px}
 .center{text-align:center}
-.bike{font-size:76px;margin:10px 0 5px}
-.status{font-size:29px;font-weight:850;margin:12px 0}
-.off{color:#ffb477}.on{color:#65edb2}
-.switches{display:flex;background:#081322;border-radius:15px;padding:5px;gap:6px}
-.switches button{flex:1;padding:15px;border:0;border-radius:11px;background:transparent;color:#a0aec5;font-size:15px;font-weight:800;cursor:pointer}
-.switches .active-off{background:#a64b36;color:white}
-.switches .active-on{background:#087b59;color:white}
-.alarmBtn{width:100%;border:0;border-radius:17px;padding:19px 12px;background:#e73e4c;color:white;font-size:17px;font-weight:850;cursor:pointer;box-shadow:0 6px 24px #e73e4c35}
-.alarmBtn:disabled{background:#344155;color:#8795aa;box-shadow:none;cursor:not-allowed}
-.stopBtn{background:#25364c;color:white;border:1px solid #50617b;width:100%;padding:14px;border-radius:13px;margin-top:12px;font-weight:700;cursor:pointer}
-.alarmstate{margin:14px 0;color:#a3b2ca;font-size:12px;text-align:center}
-#map{height:285px;border-radius:15px;z-index:1;background:#172437}
-.mapinfo{font-size:12px;color:#b7c6dc;line-height:1.6;margin-top:13px}
-a{color:#81baff}
-.field{margin-bottom:13px}
-label{font-size:12px;color:#a7bad4;display:block;margin-bottom:7px}
-input{width:100%;padding:13px;background:#091526;border:1px solid #344761;border-radius:11px;color:white;font-size:14px;outline:none}
-input:focus{border-color:#64aaff}
-.save{width:100%;padding:13px;border-radius:11px;background:#2563eb;border:0;color:white;font-weight:750;cursor:pointer}
-.note{font-size:11px;color:#95a7c0;line-height:1.6;margin-top:10px}
-.log{padding:13px;border-bottom:1px solid #29384e;font-size:12px;line-height:1.7}
-.log:last-child{border-bottom:0}
-footer{text-align:center;color:#70849f;font-size:11px;margin-top:16px}
+.bike{font-size:77px;margin:8px 0}
+.keyStatus{font-size:30px;font-weight:900;margin:14px 0 20px}
+.off{color:#ffad7a}
+.on{color:#5ff1b0}
+.switch{
+ display:flex;background:#081424;
+ border-radius:15px;padding:5px;gap:5px;
+}
+.switch button{
+ flex:1;padding:16px;border:0;border-radius:11px;
+ background:transparent;color:#9fb0c8;
+ font-size:15px;font-weight:800;cursor:pointer;
+}
+.switch .selectedOff{background:#ae4c39;color:#fff}
+.switch .selectedOn{background:#087d5c;color:#fff}
+.theft{
+ width:100%;padding:21px 12px;
+ background:#e93d4c;border:0;border-radius:17px;
+ color:#fff;font-size:16px;font-weight:900;
+ cursor:pointer;box-shadow:0 8px 26px #e93d4c33;
+}
+.theft:disabled{background:#364359;color:#8797ad;box-shadow:none}
+.stop{
+ width:100%;padding:15px;margin-top:12px;
+ background:#293a53;color:white;
+ border:1px solid #465d7b;border-radius:14px;
+ font-weight:800;cursor:pointer;
+}
+.test{
+ width:100%;padding:14px;background:#2867dd;
+ border:0;border-radius:13px;color:white;
+ font-weight:800;cursor:pointer;
+}
+.state{text-align:center;font-size:12px;color:#9bacc5;margin-top:16px;line-height:1.6}
+#map{height:290px;border-radius:15px;z-index:1}
+.mapDetails{font-size:12px;line-height:1.8;color:#b4c6df;margin-top:14px}
+a{color:#83bcff}
+.log{border-bottom:1px solid #2a3a51;padding:12px 0;font-size:12px;line-height:1.6;color:#c6d4e8}
+.log:last-child{border:0}
+.footer{text-align:center;font-size:11px;color:#7186a3;margin-top:15px}
 @media(max-width:700px){
- .app{padding:15px 13px 30px}
  .layout{grid-template-columns:1fr;gap:0}
+ .app{padding:16px 13px 30px}
  .card{padding:18px;border-radius:20px}
  h1{font-size:24px}
- #map{height:260px}
- .bike{font-size:68px}
- .alarmBtn{min-height:65px}
+ #map{height:265px}
+ .bike{font-size:70px}
+ .theft{min-height:68px}
 }
 </style>
 </head>
@@ -67,295 +92,284 @@ footer{text-align:center;color:#70849f;font-size:11px;margin-top:16px}
 
 <header>
  <div>
-  <div class="logo">KEYCHAIN<span>●</span></div>
-  <div class="small">SMART BIKE SECURITY</div>
+  <div class="brand">KEYCHAIN<span>●</span></div>
+  <div class="muted">SMART BIKE PROTECTION</div>
  </div>
- <div class="pill" id="systemPill">● SYSTEM READY</div>
+ <div class="pill" id="systemStatus">● READY</div>
 </header>
 
-<h1>Bike Security Control</h1>
-<div class="sub">Ignition • Theft Protection • Location • Telegram</div>
+<h1>Bike Security</h1>
+<div class="subtitle">Ignition Control • Anti-Theft • Telegram • Tracking</div>
 
 <div class="layout">
+
 <section>
  <div class="card center">
-  <div class="cardtitle">BIKE IGNITION</div>
+  <div class="cardTitle">BIKE IGNITION CONTROL</div>
   <div class="bike">🏍️</div>
-  <div class="small">CURRENT KEY POSITION</div>
-  <div id="keyStatus" class="status off">KEY OFF</div>
+  <div class="muted">CURRENT IGNITION STATUS</div>
+  <div id="keyStatus" class="keyStatus off">KEY OFF</div>
 
-  <div class="switches">
-   <button id="offBtn" class="active-off" onclick="setKey(false)">⏻ OFF</button>
+  <div class="switch">
+   <button id="offBtn" class="selectedOff" onclick="setKey(false)">⏻ OFF</button>
    <button id="onBtn" onclick="setKey(true)">⚡ ON</button>
   </div>
-  <p class="note">Theft protection is available when the key is OFF.</p>
+
+  <div class="state">Theft protection is available when the key is OFF.</div>
  </div>
 
  <div class="card">
-  <div class="cardtitle">🛡️ ANTI-THEFT PROTECTION</div>
-  <button class="alarmBtn" id="theftBtn" onclick="triggerTheft()">
-   🚨 REPORT STOLEN & SOUND ALARM
+  <div class="cardTitle">🛡️ ANTI-THEFT ALARM</div>
+  <button class="theft" id="theftBtn" onclick="triggerTheft()">
+   🚨 REPORT STOLEN
   </button>
-  <button class="stopBtn" onclick="stopAlarm()">
-   ■ STOP ALARM
-  </button>
-  <div class="alarmstate" id="alarmStatus">Alarm is currently inactive</div>
+  <button class="stop" onclick="stopAlarm()">■ STOP SIREN</button>
+  <div class="state" id="alarmStatus">Alarm inactive</div>
  </div>
 
  <div class="card">
-  <div class="cardtitle">📨 TELEGRAM CONFIGURATION</div>
-  <div class="field">
-   <label>Telegram Chat ID</label>
-   <input id="chatId" value="1738092176" placeholder="Chat ID">
+  <div class="cardTitle">✈ TELEGRAM CONNECTION</div>
+  <div class="muted" style="margin-bottom:13px">
+   Bot: @Keychain_theft_alert_bot<br>
+   Chat ID: 1738092176<br>
+   Credentials: Preconfigured for local testing
   </div>
-  <div class="field">
-   <label>Bot Token (local testing only)</label>
-   <input id="token" type="password" placeholder="Enter your new private bot token" autocomplete="off">
-  </div>
-  <button class="save" onclick="testTelegram()">SEND TEST ALERT</button>
-  <div class="note" id="telegramStatus">
-   Enter your current private bot token. It is not saved in this page.
-   Do not deploy this browser-token method publicly.
-  </div>
+  <button class="test" onclick="testTelegram()">SEND TEST TELEGRAM ALERT</button>
+  <div class="state" id="telegramStatus">Waiting for test</div>
  </div>
 </section>
 
 <section>
  <div class="card">
-  <div class="cardtitle">📍 BIKE LOCATION MAP</div>
+  <div class="cardTitle">📍 LOCATION TRACKING</div>
   <div id="map"></div>
-  <div class="mapinfo">
+  <div class="mapDetails">
    <strong>Meenakshi Sundararajan Engineering College</strong><br>
-   Kodambakkam, Chennai, Tamil Nadu<br>
-   <span style="color:#ffbe81">Fixed demonstration marker — not live GPS</span>
-   <p><a id="mapLink" href="#" target="_blank" rel="noopener">OPEN LOCATION IN MAP ↗</a></p>
+   Kodambakkam, Chennai<br>
+   <span style="color:#ffbe81">Fixed demo location, not live GPS</span>
+   <p><a id="mapLink" target="_blank" rel="noopener">VIEW ON OPENSTREETMAP ↗</a></p>
   </div>
  </div>
 
  <div class="card">
-  <div class="cardtitle">🕘 SECURITY EVENT HISTORY</div>
+  <div class="cardTitle">🕘 SECURITY ACTIVITY</div>
   <div id="history">
-   <div class="log">System initialized. Waiting for activity.</div>
+   <div class="log">System initialized — monitoring ready.</div>
   </div>
  </div>
 </section>
-</div>
 
-<footer>KEYCHAIN SECURITY • BIKE THEFT ALERT SYSTEM</footer>
+</div>
+<div class="footer">KEYCHAIN • BIKE ANTI-THEFT SECURITY SYSTEM</div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-"use strict";
+// LOCAL TESTING ONLY.
+// Never publish this file with the bot token included.
 
-// Approximate college-area coordinates for demonstration.
-// Replace with verified GPS coordinates for accurate positioning.
+const BOT_TOKEN = "8863142912:AAHphCQnqNxE7Kww61yHaVHu5zKfRQz4jEg";
+const CHAT_ID = "1738092176";
+const BOT_USERNAME = "Keychain_theft_alert_bot";
+
+// Approximate demo coordinates. Not actual GPS tracking.
 const LAT = 13.052;
 const LNG = 80.225;
-const CHAT_DEFAULT = "1738092176";
+
+const $ = id => document.getElementById(id);
 
 let keyOn = false;
 let alarmActive = false;
 let audioCtx = null;
+let oscillator = null;
+let gainNode = null;
 let sirenTimer = null;
-let alarmNodes = null;
-
-const $ = id => document.getElementById(id);
+let alertSending = false;
 
 const map = L.map("map").setView([LAT,LNG],15);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
- attribution:'&copy; OpenStreetMap contributors',
+ attribution:"&copy; OpenStreetMap contributors",
  maxZoom:19
 }).addTo(map);
 
 L.marker([LAT,LNG]).addTo(map)
- .bindPopup("<b>Meenakshi Sundararajan Engineering College</b><br>Approximate demo location")
+ .bindPopup("<b>Meenakshi Sundararajan Engineering College</b><br>Approximate demonstration marker")
  .openPopup();
 
 const mapUrl =
- `https://www.openstreetmap.org/?mlat=${LAT}&mlon=${LNG}#map=16/${LAT}/${LNG}`;
+ "https://www.openstreetmap.org/?mlat="+LAT+
+ "&mlon="+LNG+"#map=16/"+LAT+"/"+LNG;
 
-$("mapLink").href = mapUrl;
+$("mapLink").href=mapUrl;
 
 function logEvent(message){
- const el = document.createElement("div");
- el.className = "log";
- el.textContent = new Date().toLocaleString() + " — " + message;
- $("history").prepend(el);
+ const div=document.createElement("div");
+ div.className="log";
+ div.textContent=new Date().toLocaleString()+" — "+message;
+ $("history").prepend(div);
 }
 
 function setKey(state){
  if(alarmActive && state){
-  alert("Stop the active alarm before switching the key ON.");
+  alert("Stop the siren before turning the key ON.");
   return;
  }
- keyOn = state;
- $("keyStatus").textContent = state ? "KEY ON" : "KEY OFF";
- $("keyStatus").className = "status " + (state?"on":"off");
- $("onBtn").className = state ? "active-on" : "";
- $("offBtn").className = !state ? "active-off" : "";
- $("theftBtn").disabled = state;
- logEvent(state ? "Ignition switched ON" : "Ignition switched OFF");
+ keyOn=state;
+ $("keyStatus").textContent=state?"KEY ON":"KEY OFF";
+ $("keyStatus").className="keyStatus "+(state?"on":"off");
+ $("offBtn").className=state?"":"selectedOff";
+ $("onBtn").className=state?"selectedOn":"";
+ $("theftBtn").disabled=state;
+ logEvent(state?"Ignition switched ON":"Ignition switched OFF");
 }
 
-// Browser siren using Web Audio API
-function startAlarm(){
- if(alarmActive) return;
+async function startAlarm(){
+ if(alarmActive)return;
 
- const AudioContextClass =
-   window.AudioContext || window.webkitAudioContext;
-
- if(!AudioContextClass){
-  $("alarmStatus").textContent = "Audio not supported in this browser";
+ const AudioClass=window.AudioContext||window.webkitAudioContext;
+ if(!AudioClass){
+  $("alarmStatus").textContent="Audio not supported";
   return;
  }
 
  try{
-  audioCtx = new AudioContextClass();
-  audioCtx.resume();
+  audioCtx=new AudioClass();
+  await audioCtx.resume();
 
-  const oscillator = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
+  oscillator=audioCtx.createOscillator();
+  gainNode=audioCtx.createGain();
 
-  oscillator.type = "sawtooth";
-  gain.gain.value = 0.12;
+  oscillator.type="sawtooth";
+  gainNode.gain.value=0.12;
 
-  oscillator.connect(gain);
-  gain.connect(audioCtx.destination);
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
   oscillator.start();
 
-  alarmNodes = {oscillator,gain};
-  alarmActive = true;
+  alarmActive=true;
 
-  let high = false;
-  sirenTimer = setInterval(()=>{
-   high = !high;
+  let high=false;
+  sirenTimer=setInterval(()=>{
+   high=!high;
    oscillator.frequency.setTargetAtTime(
-    high ? 1100 : 650,
+    high?1150:600,
     audioCtx.currentTime,
-    0.08
+    0.07
    );
-  },400);
+  },350);
 
-  $("alarmStatus").textContent = "🔴 THEFT ALARM ACTIVE — SIREN SOUNDING";
-  $("systemPill").textContent = "🚨 THEFT ALERT";
-  $("systemPill").style.background = "#63242c";
-  $("systemPill").style.color = "#ffb5b5";
- }catch(err){
-  $("alarmStatus").textContent = "Could not start audio: "+err.message;
+  $("alarmStatus").textContent="🔴 SIREN ACTIVE — THEFT DETECTED";
+  $("systemStatus").textContent="🚨 ALERT";
+  $("systemStatus").style.background="#69242f";
+  $("systemStatus").style.color="#ffd0d0";
+  logEvent("Browser siren activated");
+ }catch(error){
+  $("alarmStatus").textContent="Audio error: "+error.message;
  }
 }
 
 function stopAlarm(){
  clearInterval(sirenTimer);
- sirenTimer = null;
+ sirenTimer=null;
 
- if(alarmNodes){
-  try{alarmNodes.oscillator.stop()}catch(e){}
-  try{alarmNodes.oscillator.disconnect()}catch(e){}
-  try{alarmNodes.gain.disconnect()}catch(e){}
-  alarmNodes = null;
+ if(oscillator){
+  try{oscillator.stop()}catch(e){}
+  oscillator.disconnect();
+  oscillator=null;
  }
-
+ if(gainNode){
+  gainNode.disconnect();
+  gainNode=null;
+ }
  if(audioCtx){
   audioCtx.close().catch(()=>{});
-  audioCtx = null;
+  audioCtx=null;
  }
 
- const wasActive = alarmActive;
- alarmActive = false;
- $("alarmStatus").textContent = "Alarm stopped";
- $("systemPill").textContent = "● SYSTEM READY";
- $("systemPill").style.background = "#173527";
- $("systemPill").style.color = "#6ef1a7";
+ const wasActive=alarmActive;
+ alarmActive=false;
+ $("alarmStatus").textContent="Siren stopped";
+ $("systemStatus").textContent="● READY";
+ $("systemStatus").style.background="#163829";
+ $("systemStatus").style.color="#69edaa";
 
- if(wasActive) logEvent("Alarm stopped manually");
+ if(wasActive)logEvent("Siren stopped");
 }
 
-// Telegram API testing.
-// WARNING: Browser-side token handling is for local demonstration only.
-// For production, replace this with a secure server endpoint.
 async function sendTelegram(message){
- const token = $("token").value.trim();
- const chatId = $("chatId").value.trim();
-
- if(!token || !chatId){
-  $("telegramStatus").textContent =
-    "Enter your bot token and Chat ID to enable Telegram alerts.";
-  return false;
- }
-
- const endpoint =
-   "https://api.telegram.org/bot" + token + "/sendMessage";
+ const url="https://api.telegram.org/bot"+BOT_TOKEN+"/sendMessage";
 
  try{
-  const response = await fetch(endpoint,{
+  const response=await fetch(url,{
    method:"POST",
    headers:{"Content-Type":"application/x-www-form-urlencoded"},
    body:new URLSearchParams({
-    chat_id:chatId,
+    chat_id:CHAT_ID,
     text:message
    })
   });
 
-  const result = await response.json();
+  const result=await response.json();
 
-  if(!response.ok || !result.ok){
-   throw new Error(result.description || "Telegram API error");
+  if(!response.ok||!result.ok){
+   throw new Error(result.description||"Telegram API error");
   }
 
-  $("telegramStatus").textContent = "✅ Telegram alert delivered";
-  logEvent("Telegram notification sent");
+  $("telegramStatus").textContent="✅ Telegram message delivered";
+  logEvent("Telegram alert sent");
   return true;
- }catch(err){
-  $("telegramStatus").textContent =
-    "Telegram request failed: " + err.message +
-    ". Browser CORS restrictions may require a backend.";
-  logEvent("Telegram notification failed");
+ }catch(error){
+  $("telegramStatus").textContent=
+   "Telegram request failed: "+error.message+
+   ". A backend may be required due to browser CORS.";
+  logEvent("Telegram request failed");
   return false;
  }
 }
 
 async function testTelegram(){
- $("telegramStatus").textContent = "Sending test message...";
+ $("telegramStatus").textContent="Sending test...";
  await sendTelegram(
-  "✅ KEYCHAIN SECURITY TEST\n\n" +
-  "Bike Theft Alert System is ready.\n" +
-  "Chat ID: " + $("chatId").value.trim()
+  "✅ KEYCHAIN SECURITY TEST\n\n"+
+  "Bike security dashboard connected.\n"+
+  "Bot: @"+BOT_USERNAME+"\n"+
+  "Chat ID: "+CHAT_ID+"\n"+
+  "Location: Meenakshi Sundararajan Engineering College, Chennai"
  );
 }
 
 async function triggerTheft(){
  if(keyOn){
-  alert("Switch the bike key OFF first.");
+  alert("Turn the ignition OFF first.");
   return;
  }
+ if(alarmActive||alertSending)return;
 
- if(alarmActive) return;
+ alertSending=true;
 
- startAlarm();
- logEvent("THEFT BUTTON PRESSED");
+ // Start sound immediately from user interaction.
+ await startAlarm();
+ logEvent("Theft button pressed");
 
- const time = new Date().toLocaleString();
+ const message=
+  "🚨🚨 BIKE THEFT ALERT 🚨🚨\n\n"+
+  "🔴 POSSIBLE BIKE THEFT\n"+
+  "🔑 IGNITION: OFF\n"+
+  "⏰ TIME: "+new Date().toLocaleString()+"\n\n"+
+  "📍 DEMO LOCATION:\n"+
+  "Meenakshi Sundararajan Engineering College, Chennai\n\n"+
+  "🗺️ MAP:\n"+mapUrl+"\n\n"+
+  "⚠️ Manually triggered from the Keychain Security website.";
 
- const message =
-  "🚨🚨 BIKE THEFT ALERT 🚨🚨\n\n" +
-  "🔴 STATUS: POSSIBLE BIKE THEFT\n" +
-  "🔑 IGNITION: OFF\n" +
-  "⏰ TIME: " + time + "\n\n" +
-  "📍 Demo Location:\n" +
-  "Meenakshi Sundararajan Engineering College, Chennai\n\n" +
-  "🗺️ MAP: " + mapUrl + "\n\n" +
-  "⚠️ Alert manually triggered from Keychain Security Dashboard.";
-
+ $("telegramStatus").textContent="Sending theft alert...";
  await sendTelegram(message);
+ alertSending=false;
 }
 
-// Release audio when leaving page.
 window.addEventListener("pagehide",()=>{
  clearInterval(sirenTimer);
- if(audioCtx) audioCtx.close().catch(()=>{});
+ if(audioCtx)audioCtx.close().catch(()=>{});
 });
 </script>
 </body>
